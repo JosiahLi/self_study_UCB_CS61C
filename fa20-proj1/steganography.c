@@ -25,7 +25,7 @@ Color *evaluateOnePixel(Image *image, int row, int col)
 	size_t idx;
 	Color * res; 
 	/* First, we calculate the index of the corresponding pixel */
-	idx = (row) * image->cols + (col);
+	idx = row * image->cols + col;
 	
 	res = (Color*)malloc(sizeof(Color));
 	if (image->image[idx]->B & 0x1) /* The least significant bit is nonzero */

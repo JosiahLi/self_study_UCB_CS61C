@@ -38,7 +38,7 @@ Image *readData(char *filename)
 		exit(1);
 	}
 	fscanf(target, "%*s");
-	fscanf(target, "%d %d", &rows, &cols);
+	fscanf(target, "%d %d", &cols, &rows);
 	fscanf(target, "%*s");
 
 	total = rows * cols; /* used for calculating the size of memory to be allocated for img */
@@ -72,7 +72,7 @@ void writeData(Image *image)
 	size_t size = image->cols * image->rows;
 
 	fprintf(stdout, "P3\n");
-	fprintf(stdout, "%u %u\n", image->rows, image->cols);
+	fprintf(stdout, "%u %u\n", image->cols, image->rows);
 	fprintf(stdout, "255\n");
 	/* The above code is used to print PPM3 header*/
 	for (size_t i = 0; i < size; ++i)
