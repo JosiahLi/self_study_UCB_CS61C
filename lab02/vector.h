@@ -51,5 +51,7 @@ int vector_get(vector_t *v, size_t loc);
 
 /* Set a value in the vector */
 /* YOUR CODE HERE */
+void vector_delete(vector_t *);
+void vector_set(vector_t *, size_t, int);
 
 #endif
