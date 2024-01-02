@@ -1,7 +1,7 @@
 .globl factorial
 
 .data
-n: .word 8
+n: .word 8 
 
 .text
 main:
@@ -22,3 +22,14 @@ main:
 
 factorial:
     # YOUR CODE HERE
+    addi t1, x0, 1 # res = 1
+    addi t2, x0, 1 # i = 1
+loop:
+    blt a0, t2, exit # if i > n
+    # Else 
+    mul t1, t1, t2 # res *= res * i;
+    addi t2, t2, 1 # ++i
+    jal x0, loop
+exit:
+    add a0, t1, x0 # set res as return value 
+    jr ra
