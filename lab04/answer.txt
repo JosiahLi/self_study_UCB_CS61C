@@ -1,0 +1,5 @@
+1.add t1, s0, x0 is just copying the value int s0 to t1, but we want to get the content at that address. 
+2.Since the array in each node is of int type, the offset must be four bytes.
+3.jalr s1 did not store the return address to ra.
+4.The values in t0, t1 may be modified by the callee, we must spill them onto stack.
+5.lw a1, 0(s1) is incorrect, since the address of that function is exactly in s1.
