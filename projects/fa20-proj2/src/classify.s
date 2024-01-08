@@ -47,7 +47,6 @@ classify:
     bne a0, t0, exit_classify  
     # restore a1
     mv a1, t1
-
     # store arguments
     mv s0, a2
     mv s1, a1

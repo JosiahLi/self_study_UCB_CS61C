@@ -423,6 +423,8 @@ class TestClassify(TestCase):
         ref_file = "outputs/test_basic_main/reference0.bin"
         args = ["inputs/simple0/bin/m0.bin", "inputs/simple0/bin/m1.bin",
                 "inputs/simple0/bin/inputs/input0.bin", out_file]
+        # turn on the output flag
+        t.input_scalar("a2", 0) 
         # call classify function
         t.call("classify")
         # generate assembly and pass program arguments directly to venus
@@ -431,7 +433,42 @@ class TestClassify(TestCase):
         # compare the output file and
         # raise NotImplementedError("TODO")
         # compare the classification output with `check_stdout`
-        t.check_file_output(ref_file, out_file)
+        t.check_file_output(out_file, ref_file)
+        t.check_stdout("2")
+
+    def test_simple1_fail_malloc(self):
+        t = self.make_test()
+        out_file = "outputs/test_basic_main/student1.bin"
+        ref_file = "outputs/test_basic_main/reference1.bin"
+        args = ["inputs/simple1/bin/m0.bin", "inputs/simple1/bin/m1.bin",
+                "inputs/simple1/bin/inputs/input0.bin", out_file]
+        # turn on the output flag
+        t.input_scalar("a2", 0) 
+        # call classify function
+        t.call("classify")
+        # generate assembly and pass program arguments directly to venus
+        t.execute(args=args, fail="malloc", code=88)
+
+        # compare the output file and
+        # raise NotImplementedError("TODO")
+        # compare the classification output with `check_stdout`
+        # t.check_file_output(out_file, ref_file)
+        # t.check_stdout("1")
+
+    def test_simple1_fail_argc(self):
+        t = self.make_test()
+        out_file = "outputs/test_basic_main/student1.bin"
+        ref_file = "outputs/test_basic_main/reference1.bin"
+        args = ["inputs/simple1/bin/m0.bin", "inputs/simple1/bin/m1.bin",
+                "inputs/simple1/bin/inputs/input0.bin", out_file, "dummy string"]
+        # turn on the output flag
+        t.input_scalar("a2", 0) 
+        # call classify function
+        t.call("classify")
+        # generate assembly and pass program arguments directly to venus
+        t.execute(args=args, fail="malloc", code=89)
+
+   
     @classmethod
     def tearDownClass(cls):
         print_coverage("classify.s", verbose=False)
