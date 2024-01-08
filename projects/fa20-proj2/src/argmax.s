@@ -27,10 +27,10 @@ argmax:
     beq a1, t0, loop_end
     # the length of the vector is less than 1
     addi s0, s0, 4 # let s0 point to a[1]
-    blt t0, a1, loop_continue # n > 1
+    blt t0, a1, loop_start # n > 1
     # set the exit code
-    li a0 77
-    jal x0, loop_end
+    li a1, 77
+    jal exit2
 
 loop_start:
     # As of now, the length is greater than 1

@@ -28,19 +28,21 @@ matmul:
     # Error checks
     # store a0
     mv t0, a0
+    mv t1, a1
     # check dimensions of m0
-    li a0, 72
-    bge x0, a1, matmul_end
-    bge x0, a2, matmul_end 
+    li a1, 72
+    bge x0, t1, matmul_exit
+    bge x0, a2, matmul_exit
     # check dimension of m1
-    li a0, 73
-    bge x0, a4, matmul_end
-    bge x0, a5, matmul_end
+    li a1, 73
+    bge x0, a4, matmul_exit
+    bge x0, a5, matmul_exit
     # check if the dimensions of m0 and m1 match
-    li a0, 74
-    bne a2, a4, matmul_end
-    # retore a0
+    li a1, 74
+    bne a2, a4, matmul_exit
+    # retore a0 and a1
     mv a0, t0
+    mv a1, t1
     # Prologue
     addi sp, sp, -44
     sw ra, 0(sp)
@@ -117,6 +119,8 @@ outer_loop_end:
     lw s8, 36(sp)
     lw s9, 40(sp)
     addi sp, sp, 44
-    
-matmul_end:
+
     ret
+
+matmul_exit:
+    jal exit2

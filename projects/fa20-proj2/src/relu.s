@@ -14,11 +14,12 @@
 # ==============================================================================
 relu:
     # Prologue
+
     li t0, 0 # Check if # of elements is less than 1
     blt t0, a1, loop_start
 
-    li a0, 78
-    ret
+    li a1, 78
+    jal exit2
     # Actually not need to call syscall
     #li a0, 17 # exit2
     #li a1, 78 # set exit code
