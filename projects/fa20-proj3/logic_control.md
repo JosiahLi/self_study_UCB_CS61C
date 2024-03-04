@@ -401,7 +401,7 @@ The address is the same as `sll`, just adding additional logic into control logi
 
 `address`: 01110110000 `0x3b0` ...
 
-`content`: 010000000000001 `0x2001`
+`content`: 010000000001001 `0x2009`
 
 ## SB type
 
